@@ -1,0 +1,26 @@
+name: generate-adr-index
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  generate-adr-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v3
+
+      - name: Generate ADR header
+        run: echo "# Architecture Decision Records (ADRs)" > index.md
+        working-directory: ./ADR
+
+      - name: Generate ADR list
+        run: for adr in *.md; do echo "* [$adr](./$adr)" >> index.md; done
+        working-directory: ./ADR
+
+      - name: Upload generated index
+        uses: actions/upload-artifact@v3
+        with:
+          name: adr-index
+          path: ADR/
