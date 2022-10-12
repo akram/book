@@ -11,12 +11,13 @@ jobs:
       - name: Checkout docs repo
         uses: actions/checkout@v3
 
-      - name: Generate ADR header
-        run: echo "# Architecture Decision Records (ADRs)" > index.md
+      - name: Generate ADR list
+        run: for adr in *.md; do echo "* [$adr](./$adr)" > links.md; done
         working-directory: ./ADR
 
-      - name: Generate ADR list
-        run: for adr in *.md; do echo "* [$adr](./$adr)" >> index.md; done
+      # Basically, just to add a header.
+      - name: Reformat ADR list
+        run: echo "# Architecture Decision Records (ADRs)" > index.md && cat links.md >> index.md
         working-directory: ./ADR
 
       - name: Upload generated index
