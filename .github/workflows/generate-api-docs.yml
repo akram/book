@@ -68,6 +68,12 @@ jobs:
           path: crd-temp/enterprise-contract-controller
           repository: hacbs-contract/enterprise-contract-controller
 
+      - name: Checkout devsandbox
+        uses: actions/checkout@v3
+        with:
+          repository: codeready-toolchain/api
+          path: crd-temp/devsandbox
+
       - name: Install crd-ref-docs
         uses: supplypike/setup-bin@v1
         with:
@@ -95,6 +101,9 @@ jobs:
 
       - name: Generate Enterprise Contract API docs
         run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/enterprise-contract.md --renderer=markdown --source-path=crd-temp/enterprise-contract-controller/api/v1alpha1/
+
+      - name: Generate devsandbox API docs
+        run: crd-ref-docs --log-level=ERROR --config=ref/config.yaml --output-path=ref/devsandbox.md --renderer=markdown --source-path=crd-temp/devsandbox/api/v1alpha1/
 
       - name: Upload generated docs
         uses: actions/upload-artifact@v3

@@ -16,6 +16,8 @@
 
 ## Control Plane
 
+- [DevSandbox](devsandbox.md): Responsible for providing API interface, proxy for user access, and compute.
+
 [Application]: application-environment-api.md#application
 [Components]: application-environment-api.md#component
 [Releases]: release-service.md#release
