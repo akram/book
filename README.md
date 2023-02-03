@@ -1,6 +1,6 @@
-# Book of AppStudio
+# Book of StoneSoup
 
-This repository contains the technical and architecture documents for AppStudio.
+This repository contains the technical and architecture documents for StoneSoup.
 User documentation is out of scope.
 
 ## Guide to Sections
@@ -20,7 +20,7 @@ User documentation is out of scope.
 [/diagrams](./diagrams/) folder stores the diagrams used on the overview document and slides. These diagrams are done using [draw.io](https://draw.io) and stored in _.svg_ format.
 
 ### ADRs
-[/ADR](./ADR/) folder contains the ADRs that are executed as part of the process to update these documents as explained in [contributing](#contributing)](#contributing) section.
+[/ADR](./ADR/) folder contains the ADRs that are executed as part of the process to update these documents as explained in [contributing](#contributing) section.
 
 ## Contributing
 

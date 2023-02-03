@@ -1,4 +1,4 @@
-# 2. Interacting with Internal Services
+# 3. Interacting with Internal Services
 
 Date: 2022-10-20
 
@@ -6,7 +6,7 @@ Date: 2022-10-20
 
 ---
 
-New
+Accepted
 
 ## Context
 
@@ -52,7 +52,7 @@ Using the pattern here, the user organization (called MyOrg) would create a sign
 
 ---
 
-![Interacting with Internal Services](../diagrams/interacting-with-internal-services.jpg)
+![Interacting with Internal Services](../diagrams/ADR-0003/interacting-with-internal-services.jpg)
 
 ## Open Questions
 

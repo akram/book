@@ -1,4 +1,4 @@
-# ADR-0008 Environment Provisioning
+# 8. Environment Provisioning
 
 Date: 2022-12-14
 
@@ -8,14 +8,18 @@ Accepted
 
 ## Approvers
 
-* Alexey Kazakhov
-* Ann Marie Fred
 * Elson Yuen
 * Gorkem Ercan
 * Jonathan West
+* Shoubhik Bose
+
+## Reviewers
+
+* Alexey Kazakhov
+* Ann Marie Fred
+* John Duimovich
 * Krunoslav Pavic
 * Scott Hebert
-* Shoubhik Bose
 
 ## Authors
 
@@ -183,7 +187,7 @@ spec:
 
 Binds [DeploymentTargetClaim] to a [DeploymentTarget] that satisfies its requirements.
 
-It watches for [DTC] and objects and tries to find a matching [DT] for each one of them. In addition, it's responsible for updating the `Status` sections of the [DT] and [DTC] (it also watches [DTC] objects). It marks [DTC] objects that requires dynamic provisioning.
+It watches for [DTC] resources and tries to find a matching [DT] for each one of them. In addition, it's responsible for updating the `Status` sections of the [DT] and [DTC] (it also watches [DTC] objects). It marks [DTC] objects that requires dynamic provisioning.
 
 A [DT] that was created dynamically for a specific [DTC] will always be attached to it.
 
@@ -305,7 +309,7 @@ an environment on the Sandbox cluster (using the
 API](https://docs.google.com/document/d/1uqgghk1lN9dyoBLsvn5YD443TwKrsKHU6fvfUuo84Hs/edit#)) and
 creates a [DT].
 
-- Ceate the [DT], [DTC], and [StorageClass] CRDs and make them available.
+- Create the [DT], [DTC], and [DeploymentTargetClass] CRDs and make them available.
 - Modify the Environment CRD and teach the gitops service how to navigate from the linked [DTC] to
   the [DT] in order to find the Secret that it needs for Argo.
 - Implement the binding controller.
@@ -313,8 +317,8 @@ creates a [DT].
   API](https://docs.google.com/document/d/1uqgghk1lN9dyoBLsvn5YD443TwKrsKHU6fvfUuo84Hs/edit#).
 - On workspace initialization,
   - The NsTemplateTier will:
-    - Create the Environments for Dev and Stage in the user's main namespace.
-    - Create the DeploymentTargetClaims for Dev and Stage in the user's main namespace.
+    - Create the [Environments] for Dev and Stage in the user's main namespace.
+    - Create the [DeploymentTargetClaims] for Dev and Stage in the user's main namespace.
   - The Sandbox provisioner will generate SpaceRequests.
   - The SpaceRequest controller should ultimately create namespaces, serviceaccount, and a Secret.
   - The Sandbox provisioner in response will generate the [DT], linking the Secret.
